@@ -483,6 +483,10 @@ export type TuiHostSlotMap = {
   sidebar_footer: {
     session_id: string
   }
+  message_metadata: {
+    session_id: string
+    message_id: string
+  }
 }
 
 export type TuiLinkProps = {
