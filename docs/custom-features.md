@@ -37,3 +37,24 @@ Next steps:
 - Publish `message-metadata-slot` after the repository-wide typecheck issue is resolved.
 - Open the stacked pull requests on the fork.
 - Add the `message-links-demo` plugin.
+
+## TUI-002: Clickable TUI actions
+
+Status: in progress
+
+Goal: let slot plugins execute local actions from inline TUI content without misusing URL links.
+
+Contract:
+
+- `message_metadata` remains responsible for placement and message identity.
+- `ctx.Link` opens external URLs.
+- `ctx.Action` executes a plugin callback through the host-owned mouse interaction.
+
+Branch: `tui-action-api`
+
+Commits:
+
+- `feat(plugin): expose clickable tui actions`
+- `test(tui): cover clickable tui actions`
+
+Scope: this feature belongs to the OpenCode host. Business features such as favorites remain separate plugins.
