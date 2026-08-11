@@ -40,6 +40,8 @@ test("replace slot mounts plugin content once", async () => {
 
 test("message metadata slot provides message identity and clickable links", async () => {
   const links: string[] = []
+  const actions: Array<() => void> = []
+  let clicked = false
 
   const App = () => {
     const registry = createSolidSlotRegistry<
@@ -51,6 +53,10 @@ test("message metadata slot provides message identity and clickable links", asyn
         links.push(props.href)
         return <text>{props.children}</text>
       },
+      Action: (props) => {
+        actions.push(props.onClick)
+        return <text onMouseUp={props.onClick}>{props.children}</text>
+      },
     })
     const Slot = createSlot(registry)
 
@@ -59,9 +65,10 @@ test("message metadata slot provides message identity and clickable links", asyn
       slots: {
         message_metadata(ctx, props) {
           return (
-            <ctx.Link href={`https://example.test/${props.session_id}/${props.message_id}`}>
-              open
-            </ctx.Link>
+            <box>
+              <ctx.Link href={`https://example.test/${props.session_id}/${props.message_id}`}>open</ctx.Link>
+              <ctx.Action onClick={() => (clicked = true)}>favorite</ctx.Action>
+            </box>
           )
         },
       },
@@ -73,6 +80,9 @@ test("message metadata slot provides message identity and clickable links", asyn
   const app = await testRender(() => <App />)
   try {
     expect(links).toEqual(["https://example.test/ses_test/msg_test"])
+    expect(actions).toHaveLength(1)
+    actions[0]()
+    expect(clicked).toBe(true)
   } finally {
     app.renderer.destroy()
   }
