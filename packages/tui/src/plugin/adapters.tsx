@@ -12,6 +12,7 @@ import { DialogAlert } from "../ui/dialog-alert"
 import { DialogConfirm } from "../ui/dialog-confirm"
 import { DialogPrompt } from "../ui/dialog-prompt"
 import { DialogSelect, type DialogSelectOption as SelectOption } from "../ui/dialog-select"
+import { Link } from "../ui/link"
 import { Prompt } from "../component/prompt"
 import type { useToast } from "../ui/toast"
 import * as Keymap from "../keymap"
@@ -236,6 +237,7 @@ export function createTuiApiAdapters(input: Input): Omit<TuiPluginApi, "lifecycl
           />
         )
       },
+      Link,
       Slot<Name extends string>(props: TuiSlotProps<Name>) {
         return <input.Slot {...props} />
       },
