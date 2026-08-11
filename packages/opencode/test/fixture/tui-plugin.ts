@@ -261,6 +261,7 @@ export function createTuiPluginApi(opts: Opts = {}): HostPluginApi {
       DialogConfirm: () => null,
       DialogPrompt: () => null,
       DialogSelect: () => null,
+      Link: () => null,
       Slot: () => null,
       Prompt: () => null,
       toast: () => {},
