@@ -23,6 +23,7 @@ Commits:
 - `c5d9a1bf0f` `feat(plugin): define message metadata slot`
 - `b1398b268b` `feat(tui): render message metadata slot`
 - `cb300c94bd` `test(tui): cover message metadata slot`
+- `6831d437bd` `feat(tui): add clickable metadata demo`
 
 Validation:
 
