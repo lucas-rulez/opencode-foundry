@@ -500,6 +500,15 @@ export type TuiLinkProps = {
 
 export type TuiLink = (props: TuiLinkProps) => JSX.Element
 
+export type TuiActionProps = {
+  onClick: () => void
+  children?: JSX.Element | string
+  fg?: RGBA
+  bg?: RGBA
+}
+
+export type TuiAction = (props: TuiActionProps) => JSX.Element
+
 export type TuiSlotMap<Slots extends Record<string, object> = {}> = TuiHostSlotMap & Slots
 
 type TuiSlotShape<Name extends string, Slots extends Record<string, object>> = Name extends keyof TuiHostSlotMap
@@ -517,6 +526,7 @@ export type TuiSlotProps<Name extends string = string, Slots extends Record<stri
 export type TuiSlotContext = {
   theme: TuiTheme
   Link: TuiLink
+  Action: TuiAction
 }
 
 type SlotCore<Slots extends Record<string, object> = {}> = SolidPlugin<TuiSlotMap<Slots>, TuiSlotContext>
@@ -619,6 +629,7 @@ export type TuiPluginApi = {
     DialogPrompt: (props: TuiDialogPromptProps) => JSX.Element
     DialogSelect: <Value = unknown>(props: TuiDialogSelectProps<Value>) => JSX.Element
     Link: TuiLink
+    Action: TuiAction
     Slot: <Name extends string>(props: TuiSlotProps<Name>) => JSX.Element | null
     Prompt: (props: TuiPromptProps) => JSX.Element
     toast: (input: TuiToast) => void
