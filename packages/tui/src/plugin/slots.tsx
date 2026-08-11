@@ -32,7 +32,7 @@ export function createSlots() {
     setup(api: HostPluginApi): HostSlots {
       const registry = createSolidSlotRegistry<RuntimeSlotMap, TuiSlotContext>(
         api.renderer,
-        { theme: api.theme },
+        { theme: api.theme, Link: api.ui.Link },
         {
           onPluginError(event) {
             console.error("[tui.slot] plugin error", {
